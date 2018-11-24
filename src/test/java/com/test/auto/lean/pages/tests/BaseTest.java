@@ -1,30 +1,35 @@
 package com.test.auto.lean.pages.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class BaseTest {
-    protected WebDriver driver;
-    //public WebDriverWait wait;
+class BaseTest {
+    WebDriver driver;
 
-    @BeforeClass
-    public static void setupClass(){
+    @BeforeAll
+    static void initAll(){
         WebDriverManager.firefoxdriver().setup();
     }
 
-    @Before
-    public void setupTest(){
+    @BeforeEach
+    void setupTest(){
         driver = new FirefoxDriver();
     }
 
-    @After
-    public void tearDown(){
+    @AfterEach
+    void tearDown(){
         if (driver != null){
         driver.quit();
         }
+    }
+
+    @AfterAll
+    static void tearDownAll(){
+
     }
 }

@@ -1,19 +1,18 @@
 package com.test.auto.lean.pages.pages;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.TestDataProperties;
 
 public class BasePage implements IPage{
-    private WebDriver driver;
-    private WebDriverWait wait;
+    public WebDriver driver;
+    public WebDriverWait wait;
 
     //Constructor
-    public BasePage(WebDriver driver){
+    public BasePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 15);
     }
@@ -21,7 +20,6 @@ public class BasePage implements IPage{
     //Wait Wrapper Method
     public void waitVisibility(By elementBy){
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
-        //driver.findElement()
     }
 
     //Click Method
@@ -38,15 +36,5 @@ public class BasePage implements IPage{
     public String readText(By elementBy){
         waitVisibility(elementBy);
         return driver.findElement(elementBy).getText();
-    }
-    //Assert
-    public void assertEquals(By elementBy, String expectedText){//TestNG!!!!!!expected, actual
-        waitVisibility(elementBy);
-        Assert.assertEquals(readText(elementBy), expectedText);
-    }
-    //Verify
-    public void verifyText(String expectedText, By elementBy){
-        waitVisibility(elementBy);
-        Assert.assertEquals(expectedText, readText(elementBy));
     }
 }

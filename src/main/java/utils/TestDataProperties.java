@@ -1,22 +1,33 @@
 package utils;
 
-import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
 
 public class TestDataProperties {
-    private static final Properties testData;
+    protected static FileInputStream fileInputStream;
+    protected static Properties PROPERTIES;
 
     static {
-        testData = new Properties();
-        InputStream is = TestDataProperties.class.getResourceAsStream("/src/main/resources/testdata.properties");
         try {
-            testData.load(is);
+            fileInputStream = new FileInputStream("/src/main/resources/testdata.properties");
+            PROPERTIES = new Properties();
+            PROPERTIES.load(fileInputStream);
         }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (fileInputStream != null)
+                try {
+                    fileInputStream.close();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
         }
     }
     public static String getTestProperty(String key){
-        return testData.getProperty(key);
+        return PROPERTIES.getProperty(key);
     }
 }

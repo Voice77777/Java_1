@@ -6,11 +6,14 @@ import utils.Locators;
 import static utils.TestDataProperties.getTestProperty;
 
 public class SignUpPage extends BasePage{
+    //private WebDriver driver;
+
     //Constructor
     public SignUpPage(WebDriver driver) {
         super(driver);
         driver.get(getTestProperty("td.url"));
     }
+
     public void goSignUp(){
         click(Locators.get("lc.GoSignUpPage"));
         writeText(Locators.get("lc.userMailInput"), getTestProperty("td.email"));
