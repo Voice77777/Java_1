@@ -1,30 +1,29 @@
 package com.test.auto.lean.pages.pages;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.TestDataProperties;
 
-abstract class BasePage{
-    public WebDriver driver;
-    public WebDriverWait wait;
+public class BasePage implements IPage{
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     //Constructor
     public BasePage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, 15);
     }
-    //WebDriverManager.firefoxdriver().setup();
+
     //Wait Wrapper Method
     public void waitVisibility(By elementBy){
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
         //driver.findElement()
     }
-    //Search Elements on the page
-    /*public void searchElements(By elementBy){
-        waitVisibility();
-    }*/
+
     //Click Method
     public void click(By elementBy){
         waitVisibility(elementBy);
@@ -41,8 +40,13 @@ abstract class BasePage{
         return driver.findElement(elementBy).getText();
     }
     //Assert
-    public void assertEquals(By elementBy, String expextedText){
+    public void assertEquals(By elementBy, String expectedText){//TestNG!!!!!!expected, actual
         waitVisibility(elementBy);
-        Assert.assertEquals(readText(elementBy), expextedText);
+        Assert.assertEquals(readText(elementBy), expectedText);
+    }
+    //Verify
+    public void verifyText(String expectedText, By elementBy){
+        waitVisibility(elementBy);
+        Assert.assertEquals(expectedText, readText(elementBy));
     }
 }

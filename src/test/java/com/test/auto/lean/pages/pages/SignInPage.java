@@ -1,31 +1,30 @@
 package com.test.auto.lean.pages.pages;
 
-import org.openqa.selenium.By;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Locators;
 import utils.TestDataProperties;
 
+import static utils.TestDataProperties.getTestProperty;
+
 public class SignInPage extends BasePage {
-    //public WebDriver driver;
+    //protected WebDriver driver;
+    //protected WebDriverWait wait;
+
+
     //Conctructor
     public SignInPage(WebDriver driver) {
         super(driver);
-        driver.get(TestDataProperties.getTestProperty("td.url"));//??????
     }
+    //public
 
-    //Write Text
-    public void writeText(By elementBy, String text){
-        waitVisibility(elementBy);
-        driver.findElement(elementBy).sendKeys(text);
+    public void signInPageGo(){
+        click(Locators.getLocator("lc.GoSignInPage"));
+        writeText(Locators.get("lc.userNameInput"), getTestProperty("td.login"));
+        writeText(Locators.get("lc.userPassInput"), getTestProperty("td.password"));
+        click(Locators.get("lc.loginButton"));
+        System.out.println("Sign In done");
     }
-
-   // public search()
-    public String readText(By elementBy){
-        waitVisibility(elementBy);
-        return driver.findElement(elementBy).getText();
-    }
-    //Page Variables
-    /*public void click(By elementBy) {
-        waitVisibility(elementBy);
-        driver.findElement(elementBy).click();
-    }*/
 }
