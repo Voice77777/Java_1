@@ -21,7 +21,7 @@ public class SignInPage extends BasePage {
     //public
 
     public void signInPageGo(){
-        click(Locators.getLocator("lc.GoSignInPage"));
+        click(Locators.get("lc.GoSignInPage"));
         writeText(Locators.get("lc.userNameInput"), getTestProperty("td.login"));
         writeText(Locators.get("lc.userPassInput"), getTestProperty("td.password"));
         click(Locators.get("lc.loginButton"));
