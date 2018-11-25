@@ -2,10 +2,8 @@ package com.test.auto.lean.pages.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.TestDataProperties;
 
 public class BasePage implements IPage{
     public WebDriver driver;

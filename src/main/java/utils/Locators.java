@@ -14,7 +14,7 @@ public class Locators {
 
     static {
         locators = new Properties();
-        InputStream is = Locators.class.getResourceAsStream("/src/main/java/resources/locators.properties");
+        InputStream is = Locators.class.getResourceAsStream("/src/main/resources/locators.properties");
         try {
             locators.load(is);
         }

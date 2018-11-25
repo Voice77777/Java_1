@@ -1,6 +1,7 @@
 package com.test.auto.lean.pages.pages;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,13 +17,19 @@ public class SignInPage extends BasePage {
         super(driver);
         }
 
-    public void signInPageGo(){
+    public void goSignIn(){
+        super.click(Locators.get("lc.GoSignInPage"));
+    }
 
+    public void userNameInput() {
+        super.writeText(Locators.get("lc.userNameInput"), getTestProperty("td.login"));
+    }
+
+    public void userPassInput() {
+        super.writeText(Locators.get("lc.userPassInput"), getTestProperty("td.password"));
+    }
+
+    public void submitButton(){
+        super.click(Locators.get("lc.GoSignInPage"));
     }
 }
-
-/*        click(Locators.get("lc.GoSignInPage"));
-        writeText(Locators.get("lc.userNameInput"), getTestProperty("td.login"));
-        writeText(Locators.get("lc.userPassInput"), getTestProperty("td.password"));
-        click(Locators.get("lc.loginButton"));
-        System.out.println("Sign In done");*/
