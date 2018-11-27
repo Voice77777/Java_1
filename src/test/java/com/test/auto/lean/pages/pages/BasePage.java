@@ -4,13 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.TestDataProperties;
 
 public class BasePage implements IPage{
-    public WebDriver driver;
-    public WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     //Constructor
-    public BasePage(WebDriver driver) {
+    BasePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 15);
     }
@@ -25,11 +26,13 @@ public class BasePage implements IPage{
         waitVisibility(elementBy);
         driver.findElement(elementBy).click();
     }
+
     //Write Text
     public void writeText(By elementBy, String text){
         waitVisibility(elementBy);
         driver.findElement(elementBy).sendKeys(text);
     }
+
     //Read Text
     public String readText(By elementBy){
         waitVisibility(elementBy);
