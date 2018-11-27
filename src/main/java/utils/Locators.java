@@ -6,10 +6,10 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Locators {
-    private static final Properties locators;
+    protected static Properties locators;
 
     private enum LocatorType{
-        ID, NAME, CSS, XPATH, TAG, LINK_TEXT, PART_TEXT
+        id, name, css, xpath, tag, text, partText;
     }
 
     static {
@@ -32,35 +32,35 @@ public class Locators {
         return getLocator(propertyValue);
     }
 
-    public static By get(String locatorName, String parameter){
+   public static By get(String locatorName, String parameter){
         String propertyValue = locators.getProperty(locatorName);
         return getLocator(String.format(propertyValue, parameter));
     }
 
-    public static By getLocator(String locator){
+    private static By getLocator(String locator){
         String[] locatorItems = locator.split("=", 2);
         LocatorType locatorType = LocatorType.valueOf(locatorItems[0]);
 
         switch(locatorType){
-            case ID:{
+            case id:{
                 return By.id(locatorItems[1]);
             }
-            case NAME:{
+            case name:{
                 return By.name(locatorItems[1]);
             }
-            case CSS:{
+            case css:{
                 return By.cssSelector(locatorItems[1]);
             }
-            case XPATH:{
+            case xpath:{
                 return By.xpath(locatorItems[1]);
             }
-            case TAG:{
+            case tag:{
                 return By.tagName(locatorItems[1]);
             }
-            case LINK_TEXT:{
+            case text:{
                 return By.linkText(locatorItems[1]);
             }
-            case PART_TEXT:{
+            case partText:{
                 return By.partialLinkText(locatorItems[1]);
             }
             default:{

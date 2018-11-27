@@ -6,14 +6,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.TestDataProperties;
 
-public class BasePage implements IPage{
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class BasePage{
+    public WebDriver driver;
+    public WebDriverWait wait;
 
     //Constructor
-    BasePage(WebDriver driver) {
+    public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 15);
+        wait = new WebDriverWait(driver, 20);
     }
 
     //Wait Wrapper Method
@@ -38,4 +38,5 @@ public class BasePage implements IPage{
         waitVisibility(elementBy);
         return driver.findElement(elementBy).getText();
     }
+
 }

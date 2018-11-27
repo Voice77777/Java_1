@@ -1,42 +1,37 @@
 package com.test.auto.lean.pages.tests;
 
-import com.test.auto.lean.pages.pages.SignInPage;
+import com.test.auto.lean.pages.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.*;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-import static org.junit.jupiter.api.Assertions.fail;
 
 class BaseTest {
-    protected WebDriver driver;
-
-
-    @BeforeClass
-    public static void setupClass(){
-        WebDriverManager.firefoxdriver().setup();
-    }
-
+    public WebDriver driver;
 
     @BeforeTest
     public void setupTest(){
+        WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
     }
 
-/*    @Test
-    void succeedingTest(){
-        SignInPage signInPage = new SignInPage(driver);
-        //driver.get(TestDataProperties.getTestProperty("td.url"));//("https://leantesting.com");
-        signInPage.getUrl("https://leantesting.com");
-        signInPage.userNameInput();
-        signInPage.userPassInput();
-    }*/
+    @Test
+    public void goSignUp(){
+        driver.get(TestDataProperties.getTestProperty("td.url"));//("https://leantesting.com");
+        BasePage basePage = new BasePage(driver);
+        basePage.click(By.id("menu-item-36"));
+        basePage.writeText(By.id("username"), TestDataProperties.getTestProperty("td.username"));
+        basePage.writeText(By.id("password"), TestDataProperties.getTestProperty("td.password"));
+        basePage.click(By.cssSelector("#button.btn.btn-form"));
+        }
 
     @AfterTest
     void tearDown(){

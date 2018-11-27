@@ -7,8 +7,8 @@ import java.util.Properties;
 import static java.lang.System.getProperty;
 
 public class TestDataProperties {
-        protected static FileInputStream fileInputStream;
-        protected static Properties testdata;
+        protected static  FileInputStream fileInputStream;
+        protected static  Properties testdata;
 
         static {
             try {
