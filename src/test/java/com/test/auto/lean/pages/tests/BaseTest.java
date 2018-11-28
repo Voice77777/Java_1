@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utils.Locators;
@@ -24,19 +23,22 @@ class BaseTest {
     }
 
     @Test
-    public void goSignUp(){
+    public void goSignIn() throws InterruptedException {
         driver.get(TestDataProperties.getTestProperty("td.url"));//("https://leantesting.com");
         BasePage basePage = new BasePage(driver);
-        basePage.click(By.id("menu-item-36"));
-        basePage.writeText(By.id("username"), TestDataProperties.getTestProperty("td.username"));
-        basePage.writeText(By.id("password"), TestDataProperties.getTestProperty("td.password"));
-        basePage.click(By.cssSelector("#button.btn.btn-form"));
+        basePage.click(Locators.get("lc.SignIn"));
+        basePage.writeText(Locators.get("lc.userNameInput"), TestDataProperties.getTestProperty("td.username"));
+        basePage.writeText(Locators.get("lc.userPassInput"), TestDataProperties.getTestProperty("td.password"));
+        Thread.sleep(5000);
+        basePage.click(Locators.get("lc.loginButton"));
+        Thread.sleep(5000);
+        basePage.click(Locators.get("lc.SignOutLink"));
         }
 
     @AfterTest
     void tearDown(){
-      /*if (driver != null){
+      if (driver != null){
         driver.quit();
-        }*/
+        }
     }
 }

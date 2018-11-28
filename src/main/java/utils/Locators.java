@@ -2,10 +2,12 @@ package utils;
 
 import org.openqa.selenium.By;
 
-import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
 
 public class Locators {
+    protected static FileInputStream fileInputStream;
     protected static Properties locators;
 
     private enum LocatorType{
@@ -13,13 +15,22 @@ public class Locators {
     }
 
     static {
-        locators = new Properties();
-        InputStream is = Locators.class.getResourceAsStream("src/main/resources/locators.properties");
         try {
-            locators.load(is);
+            fileInputStream = new FileInputStream("src/main/resources/locators.properties");
+            locators = new Properties();
+            locators.load(fileInputStream);
         }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (fileInputStream != null)
+                try {
+                    fileInputStream.close();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
         }
     }
 

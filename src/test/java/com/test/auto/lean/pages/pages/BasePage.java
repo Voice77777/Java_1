@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.TestDataProperties;
 
 public class BasePage{
     public WebDriver driver;
@@ -39,4 +38,11 @@ public class BasePage{
         return driver.findElement(elementBy).getText();
     }
 
+    //Clear Field
+    public void clearText(By elementBy, String text){
+        waitVisibility(elementBy);
+        driver.findElement(elementBy).clear();
+    }
+
 }
+//sendKeys(Keys.SPACE)
