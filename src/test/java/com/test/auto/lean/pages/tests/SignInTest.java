@@ -2,8 +2,6 @@ package com.test.auto.lean.pages.tests;
 
 import com.test.auto.lean.pages.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;

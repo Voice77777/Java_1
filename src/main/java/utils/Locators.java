@@ -3,7 +3,6 @@ package utils;
 import org.openqa.selenium.By;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Properties;
 
 public class Locators {
@@ -20,15 +19,15 @@ public class Locators {
             locators = new Properties();
             locators.load(fileInputStream);
         }
-        catch (IOException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
         finally {
-            if (fileInputStream != null)
+            if(fileInputStream != null)
                 try {
                     fileInputStream.close();
                 }
-                catch (IOException e) {
+                catch (java.io.IOException e) {
                     e.printStackTrace();
                 }
         }
