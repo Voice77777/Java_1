@@ -38,11 +38,16 @@ public class BasePage{
         return driver.findElement(elementBy).getText();
     }
 
-    //Clear Field
+    //Clear Text in Field
     public void clearText(By elementBy, String text){
         waitVisibility(elementBy);
         driver.findElement(elementBy).clear();
     }
 
+    //Alternative method for read text
+    public String alternativeReadText(By elementBy, String text){
+        waitVisibility(elementBy);
+        return driver.findElement(elementBy).getAttribute("value");
+    }
 }
 //sendKeys(Keys.SPACE)
