@@ -25,12 +25,12 @@ class SignInTest {
         driver.get(TestDataProperties.getTestProperty("td.url"));//("https://leantesting.com");
         BasePage basePage = new BasePage(driver);
         basePage.click(Locators.get("lc.GoSignInPage"));
-        basePage.writeText(Locators.get("lc.userNameInput"), TestDataProperties.getTestProperty("td.username"));
-        basePage.writeText(Locators.get("lc.userPassInput"), TestDataProperties.getTestProperty("td.password"));
+        basePage.writeText(Locators.get("lc.fieldInputName"), TestDataProperties.getTestProperty("td.username"));
+        basePage.writeText(Locators.get("lc.fieldInputPass"), TestDataProperties.getTestProperty("td.password"));
         Thread.sleep(5000);
-        basePage.click(Locators.get("lc.loginButton"));
+        basePage.click(Locators.get("lc.buttonSignIn"));
         Thread.sleep(5000);
-        basePage.click(Locators.get("lc.SignOutLink"));
+        basePage.click(Locators.get("lc.linkSignOut"));
         }
 
     @AfterTest

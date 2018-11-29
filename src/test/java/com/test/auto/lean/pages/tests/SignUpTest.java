@@ -24,13 +24,13 @@ public class SignUpTest {
         driver.get(TestDataProperties.getTestProperty("td.url"));//("https://leantesting.com");
         BasePage basePage = new BasePage(driver);
         basePage.click(Locators.get("lc.GoSignUpPage"));
-        basePage.writeText(Locators.get("lc.userMailInput"), TestDataProperties.getTestProperty("td.email"));
-        basePage.writeText(Locators.get("lc.userNameInput"), TestDataProperties.getTestProperty("td.username"));
-        basePage.writeText(Locators.get("lc.userPassInput"), TestDataProperties.getTestProperty("td.password"));
+        basePage.writeText(Locators.get("lc.fieldInputMail"), TestDataProperties.getTestProperty("td.email"));
+        basePage.writeText(Locators.get("lc.fieldInputName"), TestDataProperties.getTestProperty("td.username"));
+        basePage.writeText(Locators.get("lc.fieldInputPass"), TestDataProperties.getTestProperty("td.password"));
         Thread.sleep(5000);
-        basePage.click(Locators.get("lc.SignUpButton"));
+        basePage.click(Locators.get("lc.buttonSignUp"));
         Thread.sleep(5000);
-        basePage.click(Locators.get("lc.SignUpButtonGit"));
+        basePage.click(Locators.get("lc.buttonSignUpGit"));
     }
 
     @AfterTest
