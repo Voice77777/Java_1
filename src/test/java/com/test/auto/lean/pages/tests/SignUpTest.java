@@ -31,9 +31,7 @@ public class SignUpTest {
         Thread.sleep(5000);
         basePage.click(Locators.get("lc.SignUpButton"));
         Thread.sleep(5000);
-        String titleActual = driver.getTitle();
-        String titleExpected = Locators.title("lc.SignUpTitle");
-        Assert.assertEquals(titleActual, titleExpected);
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.SignUpTitle"));
     }
 
     @AfterTest

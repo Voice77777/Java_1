@@ -25,9 +25,7 @@ public class FindOutMoreAboutTest {
         driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));
         BasePage basePage = new BasePage(driver);
         basePage.click(Locators.get("lc.linkFindOutMoreAbout"));
-        String titleActual = driver.getTitle();
-        String titleExpected = Locators.title("lc.FindOutMoreAboutTitle");
-        Assert.assertEquals(titleActual, titleExpected);
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.FindOutMoreAboutTitle"));
     }
 
     @AfterTest

@@ -25,9 +25,8 @@ public class SignUpForFreeTest {
         driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));
         BasePage basePage = new BasePage(driver);
         basePage.click(Locators.get("lc.buttonSignUpForFree"));
-        String titleActual = driver.getTitle();
-        String titleExpected = Locators.title("lc.SignUpForFreeTitle");
-        Assert.assertEquals(titleActual, titleExpected);
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.SignUpForFreeTitle"));
+
     }
 
     @AfterTest

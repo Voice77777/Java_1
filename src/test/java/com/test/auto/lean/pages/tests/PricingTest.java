@@ -25,9 +25,7 @@ public class PricingTest {
         driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));
         BasePage basePage = new BasePage(driver);
         basePage.click(Locators.get("lc.linkPricing"));
-        String titleActual = driver.getTitle();
-        String titleExpected = Locators.title("lc.PricingTitle");
-        Assert.assertEquals(titleActual, titleExpected);
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.PricingTitle"));
     }
 
     @AfterTest

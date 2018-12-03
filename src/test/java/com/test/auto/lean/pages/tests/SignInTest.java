@@ -30,11 +30,10 @@ public class SignInTest {
         basePage.click(Locators.get("lc.buttonGoSignInPage"));
         basePage.writeText(Locators.get("lc.userNameInput"), TestDataProperties.getTestProperty("td.username"));
         basePage.writeText(Locators.get("lc.userPassInput"), TestDataProperties.getTestProperty("td.password"));
-        Thread.sleep(5000);
+        Thread.sleep(1000);
         basePage.click(Locators.get("lc.loginButton"));
-        String titleActual = driver.getTitle();
-        String titleExpected = Locators.title("lc.SignInTitle");
-        Assert.assertEquals(titleActual, titleExpected);
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.SignInTitle"));
+
     }
 
     @AfterTest

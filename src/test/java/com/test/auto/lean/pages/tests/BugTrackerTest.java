@@ -14,7 +14,6 @@ import utils.TestDataProperties;
 public class BugTrackerTest {
         private WebDriver driver;
 
-
         @BeforeTest
         public void setupTest(){
             WebDriverManager.firefoxdriver().setup();
@@ -26,13 +25,8 @@ public class BugTrackerTest {
             driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));//("https://leantesting.com");
             BasePage basePage = new BasePage(driver);
             basePage.click(Locators.get("lc.linkBugTracker"));
-            String titleActual = driver.getTitle();
-            String titleExpected = Locators.title("lc.BugTrackerTitle");
-            Assert.assertEquals(titleActual, titleExpected);
+            Assert.assertEquals(driver.getTitle(), Locators.title("lc.BugTrackerTitle"));
         }
-
-
-
 
         @AfterTest
         void tearDown(){

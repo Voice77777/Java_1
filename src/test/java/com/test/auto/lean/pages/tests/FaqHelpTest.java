@@ -25,9 +25,7 @@ public class FaqHelpTest {
         driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));//("https://leantesting.com");
         BasePage basePage = new BasePage(driver);
         basePage.click(Locators.get("lc.linkFaqHelp"));
-        String titleActual = driver.getTitle();
-        String titleExpected = Locators.title("lc.FaqHelpTitle");
-        Assert.assertEquals(titleActual, titleExpected);
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.FaqHelpTitle"));
     }
 
     @AfterTest

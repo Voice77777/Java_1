@@ -25,9 +25,7 @@ public class TestCasesTest {
         driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));//("https://leantesting.com");
         BasePage basePage = new BasePage(driver);
         basePage.click(Locators.get("lc.linkTestCases"));
-        String titleActual = driver.getTitle();
-        String titleExpected = Locators.title("lc.TestCasesTitle");
-        Assert.assertEquals(titleActual, titleExpected);
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.TestCasesTitle"));
     }
 
     @AfterTest

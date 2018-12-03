@@ -25,9 +25,7 @@ public class InAppBugReportingTest {
         driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));//("https://leantesting.com");
         BasePage basePage = new BasePage(driver);
         basePage.click(Locators.get("lc.linkInAppBugReporting"));
-        String titleActual = driver.getTitle();
-        String titleExpected = Locators.title("lc.InAppBugReportingTitle");
-        Assert.assertEquals(titleActual, titleExpected);
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.InAppBugReportingTitle"));
     }
 
 
