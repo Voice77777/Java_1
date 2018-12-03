@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-public class SignUpTest {
+public class PricingTest {
     private WebDriver driver;
 
     @BeforeTest
@@ -21,18 +21,12 @@ public class SignUpTest {
     }
 
     @Test
-    public void goSignUp() throws InterruptedException {
-        driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));//("https://leantesting.com");
+    public void linkPrising(){
+        driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));
         BasePage basePage = new BasePage(driver);
-        basePage.click(Locators.get("lc.buttonGoSignUpPage"));
-        basePage.writeText(Locators.get("lc.userMailInput"), TestDataProperties.getTestProperty("td.email"));
-        basePage.writeText(Locators.get("lc.userNameInput"), TestDataProperties.getTestProperty("td.username"));
-        basePage.writeText(Locators.get("lc.userPassInput"), TestDataProperties.getTestProperty("td.password"));
-        Thread.sleep(5000);
-        basePage.click(Locators.get("lc.SignUpButton"));
-        Thread.sleep(5000);
+        basePage.click(Locators.get("lc.linkPricing"));
         String titleActual = driver.getTitle();
-        String titleExpected = Locators.title("lc.SignUpTitle");
+        String titleExpected = Locators.title("lc.PricingTitle");
         Assert.assertEquals(titleActual, titleExpected);
     }
 

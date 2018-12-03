@@ -5,8 +5,8 @@ package utils;
         import java.util.Properties;
 
 public class TestDataProperties {
-    protected static  FileInputStream fileInputStream;
-    protected static  Properties testdata;
+    private static  FileInputStream fileInputStream;
+    private static  Properties testdata;
 
     static {
         try {

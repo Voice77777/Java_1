@@ -6,8 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage{
-    public WebDriver driver;
-    public WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     //Constructor
     public BasePage(WebDriver driver) {
@@ -39,15 +39,19 @@ public class BasePage{
     }
 
     //Clear Text in Field
-    public void clearText(By elementBy, String text){
+    public void clearText(By elementBy){
         waitVisibility(elementBy);
         driver.findElement(elementBy).clear();
     }
 
     //Alternative method for read text
-    public String alternativeReadText(By elementBy, String text){
+    public String alternativeReadText(By elementBy){
         waitVisibility(elementBy);
         return driver.findElement(elementBy).getAttribute("value");
     }
+
+
+
+    //public String urlEquals()
 }
 //sendKeys(Keys.SPACE)

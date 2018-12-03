@@ -6,8 +6,8 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 public class Locators {
-    protected static FileInputStream fileInputStream;
-    protected static Properties locators;
+    private static FileInputStream fileInputStream;
+    private static Properties locators;
 
     private enum LocatorType{
         id, name, css, xpath, tag, text, partText;

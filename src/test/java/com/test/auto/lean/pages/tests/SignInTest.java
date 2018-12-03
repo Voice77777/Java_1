@@ -2,8 +2,10 @@ package com.test.auto.lean.pages.tests;
 
 import com.test.auto.lean.pages.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -11,8 +13,9 @@ import utils.Locators;
 import utils.TestDataProperties;
 
 
-class SignInTest {
-    public WebDriver driver;
+public class SignInTest {
+    private WebDriver driver;
+
 
     @BeforeTest
     public void setupTest(){
@@ -22,16 +25,17 @@ class SignInTest {
 
     @Test
     public void goSignIn() throws InterruptedException {
-        driver.get(TestDataProperties.getTestProperty("td.url"));//("https://leantesting.com");
+        driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));//("https://leantesting.com");
         BasePage basePage = new BasePage(driver);
-        basePage.click(Locators.get("lc.GoSignInPage"));
-        basePage.writeText(Locators.get("lc.fieldInputName"), TestDataProperties.getTestProperty("td.username"));
-        basePage.writeText(Locators.get("lc.fieldInputPass"), TestDataProperties.getTestProperty("td.password"));
+        basePage.click(Locators.get("lc.buttonGoSignInPage"));
+        basePage.writeText(Locators.get("lc.userNameInput"), TestDataProperties.getTestProperty("td.username"));
+        basePage.writeText(Locators.get("lc.userPassInput"), TestDataProperties.getTestProperty("td.password"));
         Thread.sleep(5000);
-        basePage.click(Locators.get("lc.buttonSignIn"));
-        Thread.sleep(5000);
-        basePage.click(Locators.get("lc.linkSignOut"));
-        }
+        basePage.click(Locators.get("lc.loginButton"));
+        String titleActual = driver.getTitle();
+        String titleExpected = Locators.title("lc.SignInTitle");
+        Assert.assertEquals(titleActual, titleExpected);
+    }
 
     @AfterTest
     void tearDown(){
