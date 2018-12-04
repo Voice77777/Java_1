@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import utils.Locators;
 
 public class BasePage{
     private WebDriver driver;
@@ -46,12 +44,10 @@ public class BasePage{
         driver.findElement(elementBy).clear();
     }
 
-    //Alternative method for read text
-    public String alternativeReadText(By elementBy){
+    //Alternative method for read text placeholder
+    public String readValueAttribute(By elementBy){
         waitVisibility(elementBy);
-        return driver.findElement(elementBy).getAttribute("value");
+        return driver.findElement(elementBy).getAttribute("placeholder");
     }
-
-
 }
 //sendKeys(Keys.SPACE)
