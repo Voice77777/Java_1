@@ -1,6 +1,6 @@
-package com.test.auto.lean.pages.tests;
+package com.test.auto.lean.tests;
 
-import com.test.auto.lean.pages.pages.BasePage;
+import com.test.auto.lean.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-public class TestingResourcesTest {
+public class FindOutMoreAboutTest {
     private WebDriver driver;
 
     @BeforeTest
@@ -21,12 +21,11 @@ public class TestingResourcesTest {
     }
 
     @Test
-    public void linkPrising(){
+    public void linkFindOutMoreAbout() {
         driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));
         BasePage basePage = new BasePage(driver);
-        basePage.click(Locators.get("lc.linkTestingResources"));
-        Assert.assertEquals(driver.getTitle(), Locators.title("lc.TestingResourcesTitle"));
-
+        basePage.click(Locators.get("lc.linkFindOutMoreAbout"));
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.FindOutMoreAboutTitle"));
     }
 
     @AfterTest

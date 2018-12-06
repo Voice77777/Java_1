@@ -1,6 +1,6 @@
-package com.test.auto.lean.pages.tests;
+package com.test.auto.wiki.tests;
 
-import com.test.auto.lean.pages.pages.BasePage;
+import com.test.auto.lean.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-public class InAppBugReportingTest {
+public class WikinewsTest {
     private WebDriver driver;
 
     @BeforeTest
@@ -21,11 +21,11 @@ public class InAppBugReportingTest {
     }
 
     @Test
-    public void linkInAppBugReporting(){
-        driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));//("https://leantesting.com");
+    public void linkWikinews(){
+        driver.get(TestDataProperties.getTestProperty("td.StartPageWUrl"));
         BasePage basePage = new BasePage(driver);
-        basePage.click(Locators.get("lc.linkInAppBugReporting"));
-        Assert.assertEquals(driver.getTitle(), Locators.title("lc.InAppBugReportingTitle"));
+        basePage.click(Locators.get("lc.linkWikinews"));
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.WikinewsTitle"));
     }
 
 

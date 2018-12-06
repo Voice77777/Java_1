@@ -1,6 +1,6 @@
-package com.test.auto.lean.pages.tests;
+package com.test.auto.lean.tests;
 
-import com.test.auto.lean.pages.pages.BasePage;
+import com.test.auto.lean.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-public class SignInPlaceholderTest {
+public class SignUpPlaceholderTest {
     private WebDriver driver;
 
     @BeforeTest
@@ -21,19 +21,20 @@ public class SignInPlaceholderTest {
     }
 
     @Test
-    public void placeholderInputField(){
-        driver.get(TestDataProperties.getTestProperty("td.SignInUrl"));
+    public void placeholderInputFields(){
+        driver.get(TestDataProperties.getTestProperty("td.SignUpUrl"));
         BasePage basePage = new BasePage(driver);
+        Assert.assertEquals(basePage.readValueAttribute(Locators.get("lc.userMailInput")),
+                TestDataProperties.getTestProperty("td.emailSignUpPlaceholder"));
         Assert.assertEquals(basePage.readValueAttribute(Locators.get("lc.userNameInput")),
-                TestDataProperties.getTestProperty("td.usernameSignInPlaceholder"));
+                TestDataProperties.getTestProperty("td.usernameSignUpPlaceholder"));
         Assert.assertEquals(basePage.readValueAttribute(Locators.get("lc.userPassInput")),
-                TestDataProperties.getTestProperty("td.passwordSignInPlaceholder"));
+                TestDataProperties.getTestProperty("td.passwordSignUpPlaceholder"));
     }
 
-
     @AfterTest
-    void tearDown() {
-        if (driver != null) {
+    void tearDown(){
+        if (driver != null){
             driver.quit();
         }
     }

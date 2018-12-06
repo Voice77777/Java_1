@@ -1,6 +1,6 @@
-package com.test.auto.lean.pages.tests;
+package com.test.auto.lean.tests;
 
-import com.test.auto.lean.pages.pages.BasePage;
+import com.test.auto.lean.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-public class TestCasesTest {
+public class SignUpForFreeTest {
     private WebDriver driver;
 
     @BeforeTest
@@ -21,11 +21,12 @@ public class TestCasesTest {
     }
 
     @Test
-    public void linkTestCases(){
-        driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));//("https://leantesting.com");
+    public void buttonSignUpForFree() {
+        driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));
         BasePage basePage = new BasePage(driver);
-        basePage.click(Locators.get("lc.linkTestCases"));
-        Assert.assertEquals(driver.getTitle(), Locators.title("lc.TestCasesTitle"));
+        basePage.click(Locators.get("lc.buttonSignUpForFree"));
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.SignUpForFreeTitle"));
+
     }
 
     @AfterTest

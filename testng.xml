@@ -4,8 +4,8 @@
 <suite name="AutoTestLean">
     <test name="LeanTest">
         <classes>
-        <class name="com.test.auto.lean.pages.tests.SignInTest"/>
-        <class name="com.test.auto.lean.pages.tests.SignUpTest"/>
+        <class name="SignInTest"/>
+        <class name="SignUpTest"/>
         </classes>
     </test>
 </suite>

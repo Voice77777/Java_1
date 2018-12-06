@@ -1,6 +1,6 @@
-package com.test.auto.lean.pages.tests;
+package com.test.auto.lean.tests;
 
-import com.test.auto.lean.pages.pages.BasePage;
+import com.test.auto.lean.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-public class SignUpPlaceholderTest {
+public class SignUpInvalidTest {
     private WebDriver driver;
 
     @BeforeTest
@@ -21,15 +21,15 @@ public class SignUpPlaceholderTest {
     }
 
     @Test
-    public void placeholderInputFields(){
+    public void invalidDataInput() throws InterruptedException {
         driver.get(TestDataProperties.getTestProperty("td.SignUpUrl"));
         BasePage basePage = new BasePage(driver);
-        Assert.assertEquals(basePage.readValueAttribute(Locators.get("lc.userMailInput")),
-                TestDataProperties.getTestProperty("td.emailSignUpPlaceholder"));
-        Assert.assertEquals(basePage.readValueAttribute(Locators.get("lc.userNameInput")),
-                TestDataProperties.getTestProperty("td.usernameSignUpPlaceholder"));
-        Assert.assertEquals(basePage.readValueAttribute(Locators.get("lc.userPassInput")),
-                TestDataProperties.getTestProperty("td.passwordSignUpPlaceholder"));
+        basePage.writeText(Locators.get("lc.userMailInput"), TestDataProperties.getTestProperty("td.mixData"));
+        basePage.writeText(Locators.get("lc.userNameInput"), TestDataProperties.getTestProperty("td.logNot"));
+        basePage.writeText(Locators.get("lc.userPassInput"), TestDataProperties.getTestProperty("td.passNot"));
+        Thread.sleep(1000);
+        basePage.click(Locators.get("lc.SignUpButton"));
+        Assert.assertEquals(driver.getTitle(),Locators.title("lc.SignUpTitle"));
     }
 
     @AfterTest

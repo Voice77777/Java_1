@@ -1,6 +1,6 @@
-package com.test.auto.lean.pages.tests;
+package com.test.auto.wiki.tests;
 
-import com.test.auto.lean.pages.pages.BasePage;
+import com.test.auto.lean.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-public class MoreInfoAboutTest {
+public class MetaWikiTest {
     private WebDriver driver;
 
     @BeforeTest
@@ -19,15 +19,12 @@ public class MoreInfoAboutTest {
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
     }
-
     @Test
-    public void linkMoreInfoAbout() {
-        driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));
+    public void linkMetaWiki(){ driver.get(TestDataProperties.getTestProperty("td.StartPageWUrl"));
         BasePage basePage = new BasePage(driver);
-        basePage.click(Locators.get("lc.linkMoreInfoAbout"));
-        Assert.assertEquals(driver.getTitle(), Locators.title("lc.MoreInfoAboutTitle"));
+        basePage.click(Locators.get("lc.linkMetaWiki"));
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.MetaWikiTitle"));
     }
-
     @AfterTest
     void tearDown(){
         if (driver != null){

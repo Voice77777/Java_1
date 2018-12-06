@@ -1,8 +1,7 @@
-package com.test.auto.lean.pages.tests;
+package com.test.auto.lean.tests;
 
-import com.test.auto.lean.pages.pages.BasePage;
+import com.test.auto.lean.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -12,10 +11,8 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-
-public class SignInTest {
+public class InAppBugReportingTest {
     private WebDriver driver;
-
 
     @BeforeTest
     public void setupTest(){
@@ -24,22 +21,18 @@ public class SignInTest {
     }
 
     @Test
-    public void goSignIn() throws InterruptedException {
+    public void linkInAppBugReporting(){
         driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));//("https://leantesting.com");
         BasePage basePage = new BasePage(driver);
-        basePage.click(Locators.get("lc.buttonGoSignInPage"));
-        basePage.writeText(Locators.get("lc.userNameInput"), TestDataProperties.getTestProperty("td.username"));
-        basePage.writeText(Locators.get("lc.userPassInput"), TestDataProperties.getTestProperty("td.password"));
-        Thread.sleep(1000);
-        basePage.click(Locators.get("lc.loginButton"));
-        Assert.assertEquals(driver.getTitle(), Locators.title("lc.SignInTitle"));
-
+        basePage.click(Locators.get("lc.linkInAppBugReporting"));
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.InAppBugReportingTitle"));
     }
+
 
     @AfterTest
     void tearDown(){
-      if (driver != null){
-        driver.quit();
+        if (driver != null){
+            driver.quit();
         }
     }
 }

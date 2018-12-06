@@ -1,8 +1,7 @@
-package com.test.auto.lean.pages.tests;
+package com.test.auto.lean.tests;
 
-import com.test.auto.lean.pages.pages.BasePage;
+import com.test.auto.lean.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -12,7 +11,7 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-public class SignUpInvalidTest {
+public class SignInInvalidTest {
     private WebDriver driver;
 
     @BeforeTest
@@ -23,19 +22,19 @@ public class SignUpInvalidTest {
 
     @Test
     public void invalidDataInput() throws InterruptedException {
-        driver.get(TestDataProperties.getTestProperty("td.SignUpUrl"));
+        driver.get(TestDataProperties.getTestProperty("td.SignInUrl"));//("https://leantesting.com");
         BasePage basePage = new BasePage(driver);
-        basePage.writeText(Locators.get("lc.userMailInput"), TestDataProperties.getTestProperty("td.mixData"));
         basePage.writeText(Locators.get("lc.userNameInput"), TestDataProperties.getTestProperty("td.logNot"));
         basePage.writeText(Locators.get("lc.userPassInput"), TestDataProperties.getTestProperty("td.passNot"));
         Thread.sleep(1000);
-        basePage.click(Locators.get("lc.SignUpButton"));
-        Assert.assertEquals(driver.getTitle(),Locators.title("lc.SignUpTitle"));
+        basePage.click(Locators.get("lc.loginButton"));
+        Assert.assertEquals(basePage.readText(Locators.get("lc.errorInputMessage")),
+                TestDataProperties.getTestProperty("td.errorInputMessage"));
     }
 
     @AfterTest
-    void tearDown(){
-        if (driver != null){
+    void tearDown() {
+        if (driver != null) {
             driver.quit();
         }
     }

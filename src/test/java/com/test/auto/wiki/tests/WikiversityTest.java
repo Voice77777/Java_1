@@ -1,6 +1,6 @@
-package com.test.auto.lean.pages.tests;
+package com.test.auto.wiki.tests;
 
-import com.test.auto.lean.pages.pages.BasePage;
+import com.test.auto.lean.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-public class FaqHelpTest {
+public class WikiversityTest {
     private WebDriver driver;
 
     @BeforeTest
@@ -21,12 +21,14 @@ public class FaqHelpTest {
     }
 
     @Test
-    public void linkFaqHelp(){
-        driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));//("https://leantesting.com");
+    public void linkWikiversity(){
+        driver.get(TestDataProperties.getTestProperty("td.StartPageWUrl"));
         BasePage basePage = new BasePage(driver);
-        basePage.click(Locators.get("lc.linkFaqHelp"));
-        Assert.assertEquals(driver.getTitle(), Locators.title("lc.FaqHelpTitle"));
+        basePage.click(Locators.get("lc.linkWikiversity"));
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.WikiversityTitle"));
+        System.out.println("Test end OK!");
     }
+
 
     @AfterTest
     void tearDown(){

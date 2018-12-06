@@ -1,4 +1,4 @@
-package com.test.auto.lean.pages.pages;
+package com.test.auto.lean.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

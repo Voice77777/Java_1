@@ -1,6 +1,6 @@
-package com.test.auto.lean.pages.tests;
+package com.test.auto.wiki.tests;
 
-import com.test.auto.lean.pages.pages.BasePage;
+import com.test.auto.lean.pages.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import utils.Locators;
 import utils.TestDataProperties;
 
-public class SignUpForFreeTest {
+public class MediaWikiTest {
     private WebDriver driver;
 
     @BeforeTest
@@ -21,13 +21,13 @@ public class SignUpForFreeTest {
     }
 
     @Test
-    public void buttonSignUpForFree() {
-        driver.get(TestDataProperties.getTestProperty("td.HomePageUrl"));
+    public void linkMediaWiki(){
+        driver.get(TestDataProperties.getTestProperty("td.StartPageWUrl"));
         BasePage basePage = new BasePage(driver);
-        basePage.click(Locators.get("lc.buttonSignUpForFree"));
-        Assert.assertEquals(driver.getTitle(), Locators.title("lc.SignUpForFreeTitle"));
-
+        basePage.click(Locators.get("lc.linkMediaWiki"));
+        Assert.assertEquals(driver.getTitle(), Locators.title("lc.MediaWikiTitle"));
     }
+
 
     @AfterTest
     void tearDown(){
