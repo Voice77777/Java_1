@@ -10,7 +10,7 @@ public class Locators {
     private static Properties locators;
 
     private enum LocatorType{
-        id, name, css, xpath, tag, text, partText;
+        id, name, css, xpath, tag, link, partText;
     }
 
     static {
@@ -67,7 +67,7 @@ public class Locators {
             case tag:{
                 return By.tagName(locatorItems[1]);
             }
-            case text:{
+            case link:{
                 return By.linkText(locatorItems[1]);
             }
             case partText:{
